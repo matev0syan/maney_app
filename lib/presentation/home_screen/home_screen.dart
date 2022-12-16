@@ -1,48 +1,72 @@
 import 'package:flutter/material.dart';
 import 'package:maney_app/packages/colors_theme.dart';
-import 'package:maney_app/presentation/home_screen/widgets/add_button.dart';
-import 'package:maney_app/presentation/home_screen/widgets/byed_items_container.dart';
+import 'package:maney_app/presentation/home_screen/models/home_screen_view_model.dart';
+import 'package:maney_app/presentation/home_screen/widgets/add_consumable_item_button.dart';
+import 'package:maney_app/presentation/home_screen/widgets/consumable_item_container.dart';
 import 'package:maney_app/presentation/home_screen/widgets/current_data_container.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({
+    super.key,
+    required this.homeScreenViewModel,
+  });
+
+  final HomeScreenViewModel homeScreenViewModel;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kMainColorBlack,
-      appBar: AppBar(
-        backgroundColor: kMainColorBlack,
-        actions: const [
-          Icon(
-            Icons.menu_sharp,
-            color: kMainColorWhite,
+      body: CustomScrollView(
+        slivers: [
+          const SliverAppBar(
+            pinned: true,
+            snap: false,
+            floating: false,
+            backgroundColor: kMainColorBlack,
+            actions: [
+              Icon(
+                Icons.menu_sharp,
+                color: kMainColorWhite,
+              ),
+              SizedBox(width: 10),
+            ],
           ),
-          SizedBox(
-            width: 16,
-          )
-        ],
-      ),
-      body: ListView(
-        children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 35),
+          const SliverToBoxAdapter(
             child: Text(
-              'Current maney',
+              'Current data',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 33,
+                fontSize: 35,
                 color: kMainColorWhite,
               ),
             ),
           ),
-          const SizedBox(height: 30),
-          const CurrentDataContainer(),
-          const SizedBox(height: 45),
-          for (int i = 0; i < 20; i++) const ByedItemsContainer(),
+          const SliverToBoxAdapter(
+            child: SizedBox(height: 30),
+          ),
+          SliverToBoxAdapter(
+            child: CurrentDataContainer(
+              currentSum: '${homeScreenViewModel.totalAmount}',
+            ),
+          ),
+          const SliverToBoxAdapter(
+            child: SizedBox(height: 30),
+          ),
+          if (homeScreenViewModel.items.isNotEmpty)
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return ConsumableItemContainer(
+                    viewModel: homeScreenViewModel,
+                  );
+                },
+                childCount: 20,
+              ),
+            ),
         ],
       ),
-      floatingActionButton: const AddButton(),
+      floatingActionButton: const AddConsumableItemButton(),
     );
   }
 }
