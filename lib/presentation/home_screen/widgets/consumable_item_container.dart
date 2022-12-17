@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:maney_app/packages/colors_theme.dart';
-import 'package:maney_app/presentation/home_screen/models/home_screen_view_model.dart';
 
 class ConsumableItemContainer extends StatelessWidget {
   const ConsumableItemContainer({
     super.key,
-    required this.viewModel,
+    required this.itemName,
+    required this.itemSum,
   });
 
-  final HomeScreenViewModel viewModel;
+  final String itemName;
+  final double itemSum;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class ConsumableItemContainer extends StatelessWidget {
           ),
           Flexible(
             child: Text(
-              '${viewModel.items.first.text}  ${viewModel.items.first.itemSum}',
+              '$itemName    $itemSum',
               style: const TextStyle(
                 fontSize: 16,
                 color: kMainColorWhite,

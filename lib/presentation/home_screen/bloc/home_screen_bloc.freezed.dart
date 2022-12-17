@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'home_screen_bloc_bloc.dart';
+part of 'home_screen_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$HomeScreenBlocEvent {
+mixin _$HomeScreenEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String itemName, double itemSum) addItem,
@@ -57,16 +57,16 @@ mixin _$HomeScreenBlocEvent {
 }
 
 /// @nodoc
-abstract class $HomeScreenBlocEventCopyWith<$Res> {
-  factory $HomeScreenBlocEventCopyWith(
-          HomeScreenBlocEvent value, $Res Function(HomeScreenBlocEvent) then) =
-      _$HomeScreenBlocEventCopyWithImpl<$Res, HomeScreenBlocEvent>;
+abstract class $HomeScreenEventCopyWith<$Res> {
+  factory $HomeScreenEventCopyWith(
+          HomeScreenEvent value, $Res Function(HomeScreenEvent) then) =
+      _$HomeScreenEventCopyWithImpl<$Res, HomeScreenEvent>;
 }
 
 /// @nodoc
-class _$HomeScreenBlocEventCopyWithImpl<$Res, $Val extends HomeScreenBlocEvent>
-    implements $HomeScreenBlocEventCopyWith<$Res> {
-  _$HomeScreenBlocEventCopyWithImpl(this._value, this._then);
+class _$HomeScreenEventCopyWithImpl<$Res, $Val extends HomeScreenEvent>
+    implements $HomeScreenEventCopyWith<$Res> {
+  _$HomeScreenEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -85,7 +85,7 @@ abstract class _$$AddConsumableItemEventCopyWith<$Res> {
 
 /// @nodoc
 class __$$AddConsumableItemEventCopyWithImpl<$Res>
-    extends _$HomeScreenBlocEventCopyWithImpl<$Res, _$AddConsumableItemEvent>
+    extends _$HomeScreenEventCopyWithImpl<$Res, _$AddConsumableItemEvent>
     implements _$$AddConsumableItemEventCopyWith<$Res> {
   __$$AddConsumableItemEventCopyWithImpl(_$AddConsumableItemEvent _value,
       $Res Function(_$AddConsumableItemEvent) _then)
@@ -123,7 +123,7 @@ class _$AddConsumableItemEvent implements AddConsumableItemEvent {
 
   @override
   String toString() {
-    return 'HomeScreenBlocEvent.addItem(itemName: $itemName, itemSum: $itemSum)';
+    return 'HomeScreenEvent.addItem(itemName: $itemName, itemSum: $itemSum)';
   }
 
   @override
@@ -209,7 +209,7 @@ class _$AddConsumableItemEvent implements AddConsumableItemEvent {
   }
 }
 
-abstract class AddConsumableItemEvent implements HomeScreenBlocEvent {
+abstract class AddConsumableItemEvent implements HomeScreenEvent {
   const factory AddConsumableItemEvent(
       {required final String itemName,
       required final double itemSum}) = _$AddConsumableItemEvent;
@@ -230,7 +230,7 @@ abstract class _$$AddCurrentSumEventCopyWith<$Res> {
 
 /// @nodoc
 class __$$AddCurrentSumEventCopyWithImpl<$Res>
-    extends _$HomeScreenBlocEventCopyWithImpl<$Res, _$AddCurrentSumEvent>
+    extends _$HomeScreenEventCopyWithImpl<$Res, _$AddCurrentSumEvent>
     implements _$$AddCurrentSumEventCopyWith<$Res> {
   __$$AddCurrentSumEventCopyWithImpl(
       _$AddCurrentSumEvent _value, $Res Function(_$AddCurrentSumEvent) _then)
@@ -244,7 +244,7 @@ class _$AddCurrentSumEvent implements AddCurrentSumEvent {
 
   @override
   String toString() {
-    return 'HomeScreenBlocEvent.addCurrentSum()';
+    return 'HomeScreenEvent.addCurrentSum()';
   }
 
   @override
@@ -319,12 +319,12 @@ class _$AddCurrentSumEvent implements AddCurrentSumEvent {
   }
 }
 
-abstract class AddCurrentSumEvent implements HomeScreenBlocEvent {
+abstract class AddCurrentSumEvent implements HomeScreenEvent {
   const factory AddCurrentSumEvent() = _$AddCurrentSumEvent;
 }
 
 /// @nodoc
-mixin _$HomeScreenBlocState {
+mixin _$HomeScreenState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -378,16 +378,16 @@ mixin _$HomeScreenBlocState {
 }
 
 /// @nodoc
-abstract class $HomeScreenBlocStateCopyWith<$Res> {
-  factory $HomeScreenBlocStateCopyWith(
-          HomeScreenBlocState value, $Res Function(HomeScreenBlocState) then) =
-      _$HomeScreenBlocStateCopyWithImpl<$Res, HomeScreenBlocState>;
+abstract class $HomeScreenStateCopyWith<$Res> {
+  factory $HomeScreenStateCopyWith(
+          HomeScreenState value, $Res Function(HomeScreenState) then) =
+      _$HomeScreenStateCopyWithImpl<$Res, HomeScreenState>;
 }
 
 /// @nodoc
-class _$HomeScreenBlocStateCopyWithImpl<$Res, $Val extends HomeScreenBlocState>
-    implements $HomeScreenBlocStateCopyWith<$Res> {
-  _$HomeScreenBlocStateCopyWithImpl(this._value, this._then);
+class _$HomeScreenStateCopyWithImpl<$Res, $Val extends HomeScreenState>
+    implements $HomeScreenStateCopyWith<$Res> {
+  _$HomeScreenStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -404,7 +404,7 @@ abstract class _$$InitialStateCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialStateCopyWithImpl<$Res>
-    extends _$HomeScreenBlocStateCopyWithImpl<$Res, _$InitialState>
+    extends _$HomeScreenStateCopyWithImpl<$Res, _$InitialState>
     implements _$$InitialStateCopyWith<$Res> {
   __$$InitialStateCopyWithImpl(
       _$InitialState _value, $Res Function(_$InitialState) _then)
@@ -418,7 +418,7 @@ class _$InitialState implements InitialState {
 
   @override
   String toString() {
-    return 'HomeScreenBlocState.initial()';
+    return 'HomeScreenState.initial()';
   }
 
   @override
@@ -505,7 +505,7 @@ class _$InitialState implements InitialState {
   }
 }
 
-abstract class InitialState implements HomeScreenBlocState {
+abstract class InitialState implements HomeScreenState {
   const factory InitialState() = _$InitialState;
 }
 
@@ -518,7 +518,7 @@ abstract class _$$EmptyStateCopyWith<$Res> {
 
 /// @nodoc
 class __$$EmptyStateCopyWithImpl<$Res>
-    extends _$HomeScreenBlocStateCopyWithImpl<$Res, _$EmptyState>
+    extends _$HomeScreenStateCopyWithImpl<$Res, _$EmptyState>
     implements _$$EmptyStateCopyWith<$Res> {
   __$$EmptyStateCopyWithImpl(
       _$EmptyState _value, $Res Function(_$EmptyState) _then)
@@ -532,7 +532,7 @@ class _$EmptyState implements EmptyState {
 
   @override
   String toString() {
-    return 'HomeScreenBlocState.empty()';
+    return 'HomeScreenState.empty()';
   }
 
   @override
@@ -619,7 +619,7 @@ class _$EmptyState implements EmptyState {
   }
 }
 
-abstract class EmptyState implements HomeScreenBlocState {
+abstract class EmptyState implements HomeScreenState {
   const factory EmptyState() = _$EmptyState;
 }
 
@@ -632,7 +632,7 @@ abstract class _$$LoadingStateCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingStateCopyWithImpl<$Res>
-    extends _$HomeScreenBlocStateCopyWithImpl<$Res, _$LoadingState>
+    extends _$HomeScreenStateCopyWithImpl<$Res, _$LoadingState>
     implements _$$LoadingStateCopyWith<$Res> {
   __$$LoadingStateCopyWithImpl(
       _$LoadingState _value, $Res Function(_$LoadingState) _then)
@@ -646,7 +646,7 @@ class _$LoadingState implements LoadingState {
 
   @override
   String toString() {
-    return 'HomeScreenBlocState.loading()';
+    return 'HomeScreenState.loading()';
   }
 
   @override
@@ -733,7 +733,7 @@ class _$LoadingState implements LoadingState {
   }
 }
 
-abstract class LoadingState implements HomeScreenBlocState {
+abstract class LoadingState implements HomeScreenState {
   const factory LoadingState() = _$LoadingState;
 }
 
@@ -750,7 +750,7 @@ abstract class _$$LoadedStateCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadedStateCopyWithImpl<$Res>
-    extends _$HomeScreenBlocStateCopyWithImpl<$Res, _$LoadedState>
+    extends _$HomeScreenStateCopyWithImpl<$Res, _$LoadedState>
     implements _$$LoadedStateCopyWith<$Res> {
   __$$LoadedStateCopyWithImpl(
       _$LoadedState _value, $Res Function(_$LoadedState) _then)
@@ -789,7 +789,7 @@ class _$LoadedState implements LoadedState {
 
   @override
   String toString() {
-    return 'HomeScreenBlocState.loaded(homeScreenViewModel: $homeScreenViewModel)';
+    return 'HomeScreenState.loaded(homeScreenViewModel: $homeScreenViewModel)';
   }
 
   @override
@@ -885,7 +885,7 @@ class _$LoadedState implements LoadedState {
   }
 }
 
-abstract class LoadedState implements HomeScreenBlocState {
+abstract class LoadedState implements HomeScreenState {
   const factory LoadedState(
       {required final HomeScreenViewModel homeScreenViewModel}) = _$LoadedState;
 
