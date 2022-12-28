@@ -19,19 +19,19 @@ mixin _$HomeScreenEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String itemName, double itemSum) addItem,
-    required TResult Function() addCurrentSum,
+    required TResult Function(double currentSum) addCurrentSum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String itemName, double itemSum)? addItem,
-    TResult? Function()? addCurrentSum,
+    TResult? Function(double currentSum)? addCurrentSum,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String itemName, double itemSum)? addItem,
-    TResult Function()? addCurrentSum,
+    TResult Function(double currentSum)? addCurrentSum,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -150,7 +150,7 @@ class _$AddConsumableItemEvent implements AddConsumableItemEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String itemName, double itemSum) addItem,
-    required TResult Function() addCurrentSum,
+    required TResult Function(double currentSum) addCurrentSum,
   }) {
     return addItem(itemName, itemSum);
   }
@@ -159,7 +159,7 @@ class _$AddConsumableItemEvent implements AddConsumableItemEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String itemName, double itemSum)? addItem,
-    TResult? Function()? addCurrentSum,
+    TResult? Function(double currentSum)? addCurrentSum,
   }) {
     return addItem?.call(itemName, itemSum);
   }
@@ -168,7 +168,7 @@ class _$AddConsumableItemEvent implements AddConsumableItemEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String itemName, double itemSum)? addItem,
-    TResult Function()? addCurrentSum,
+    TResult Function(double currentSum)? addCurrentSum,
     required TResult orElse(),
   }) {
     if (addItem != null) {
@@ -226,6 +226,8 @@ abstract class _$$AddCurrentSumEventCopyWith<$Res> {
   factory _$$AddCurrentSumEventCopyWith(_$AddCurrentSumEvent value,
           $Res Function(_$AddCurrentSumEvent) then) =
       __$$AddCurrentSumEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({double currentSum});
 }
 
 /// @nodoc
@@ -235,54 +237,80 @@ class __$$AddCurrentSumEventCopyWithImpl<$Res>
   __$$AddCurrentSumEventCopyWithImpl(
       _$AddCurrentSumEvent _value, $Res Function(_$AddCurrentSumEvent) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? currentSum = null,
+  }) {
+    return _then(_$AddCurrentSumEvent(
+      currentSum: null == currentSum
+          ? _value.currentSum
+          : currentSum // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$AddCurrentSumEvent implements AddCurrentSumEvent {
-  const _$AddCurrentSumEvent();
+  const _$AddCurrentSumEvent({required this.currentSum});
+
+  @override
+  final double currentSum;
 
   @override
   String toString() {
-    return 'HomeScreenEvent.addCurrentSum()';
+    return 'HomeScreenEvent.addCurrentSum(currentSum: $currentSum)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AddCurrentSumEvent);
+        (other.runtimeType == runtimeType &&
+            other is _$AddCurrentSumEvent &&
+            (identical(other.currentSum, currentSum) ||
+                other.currentSum == currentSum));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, currentSum);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddCurrentSumEventCopyWith<_$AddCurrentSumEvent> get copyWith =>
+      __$$AddCurrentSumEventCopyWithImpl<_$AddCurrentSumEvent>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String itemName, double itemSum) addItem,
-    required TResult Function() addCurrentSum,
+    required TResult Function(double currentSum) addCurrentSum,
   }) {
-    return addCurrentSum();
+    return addCurrentSum(currentSum);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String itemName, double itemSum)? addItem,
-    TResult? Function()? addCurrentSum,
+    TResult? Function(double currentSum)? addCurrentSum,
   }) {
-    return addCurrentSum?.call();
+    return addCurrentSum?.call(currentSum);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String itemName, double itemSum)? addItem,
-    TResult Function()? addCurrentSum,
+    TResult Function(double currentSum)? addCurrentSum,
     required TResult orElse(),
   }) {
     if (addCurrentSum != null) {
-      return addCurrentSum();
+      return addCurrentSum(currentSum);
     }
     return orElse();
   }
@@ -320,7 +348,13 @@ class _$AddCurrentSumEvent implements AddCurrentSumEvent {
 }
 
 abstract class AddCurrentSumEvent implements HomeScreenEvent {
-  const factory AddCurrentSumEvent() = _$AddCurrentSumEvent;
+  const factory AddCurrentSumEvent({required final double currentSum}) =
+      _$AddCurrentSumEvent;
+
+  double get currentSum;
+  @JsonKey(ignore: true)
+  _$$AddCurrentSumEventCopyWith<_$AddCurrentSumEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -330,7 +364,9 @@ mixin _$HomeScreenState {
     required TResult Function() initial,
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(HomeScreenViewModel homeScreenViewModel) loaded,
+    required TResult Function(
+            HomeScreenViewModel homeScreenViewModel, double sum)
+        loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -338,7 +374,8 @@ mixin _$HomeScreenState {
     TResult? Function()? initial,
     TResult? Function()? empty,
     TResult? Function()? loading,
-    TResult? Function(HomeScreenViewModel homeScreenViewModel)? loaded,
+    TResult? Function(HomeScreenViewModel homeScreenViewModel, double sum)?
+        loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -346,7 +383,8 @@ mixin _$HomeScreenState {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(HomeScreenViewModel homeScreenViewModel)? loaded,
+    TResult Function(HomeScreenViewModel homeScreenViewModel, double sum)?
+        loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -436,7 +474,9 @@ class _$InitialState implements InitialState {
     required TResult Function() initial,
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(HomeScreenViewModel homeScreenViewModel) loaded,
+    required TResult Function(
+            HomeScreenViewModel homeScreenViewModel, double sum)
+        loaded,
   }) {
     return initial();
   }
@@ -447,7 +487,8 @@ class _$InitialState implements InitialState {
     TResult? Function()? initial,
     TResult? Function()? empty,
     TResult? Function()? loading,
-    TResult? Function(HomeScreenViewModel homeScreenViewModel)? loaded,
+    TResult? Function(HomeScreenViewModel homeScreenViewModel, double sum)?
+        loaded,
   }) {
     return initial?.call();
   }
@@ -458,7 +499,8 @@ class _$InitialState implements InitialState {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(HomeScreenViewModel homeScreenViewModel)? loaded,
+    TResult Function(HomeScreenViewModel homeScreenViewModel, double sum)?
+        loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -550,7 +592,9 @@ class _$EmptyState implements EmptyState {
     required TResult Function() initial,
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(HomeScreenViewModel homeScreenViewModel) loaded,
+    required TResult Function(
+            HomeScreenViewModel homeScreenViewModel, double sum)
+        loaded,
   }) {
     return empty();
   }
@@ -561,7 +605,8 @@ class _$EmptyState implements EmptyState {
     TResult? Function()? initial,
     TResult? Function()? empty,
     TResult? Function()? loading,
-    TResult? Function(HomeScreenViewModel homeScreenViewModel)? loaded,
+    TResult? Function(HomeScreenViewModel homeScreenViewModel, double sum)?
+        loaded,
   }) {
     return empty?.call();
   }
@@ -572,7 +617,8 @@ class _$EmptyState implements EmptyState {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(HomeScreenViewModel homeScreenViewModel)? loaded,
+    TResult Function(HomeScreenViewModel homeScreenViewModel, double sum)?
+        loaded,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -664,7 +710,9 @@ class _$LoadingState implements LoadingState {
     required TResult Function() initial,
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(HomeScreenViewModel homeScreenViewModel) loaded,
+    required TResult Function(
+            HomeScreenViewModel homeScreenViewModel, double sum)
+        loaded,
   }) {
     return loading();
   }
@@ -675,7 +723,8 @@ class _$LoadingState implements LoadingState {
     TResult? Function()? initial,
     TResult? Function()? empty,
     TResult? Function()? loading,
-    TResult? Function(HomeScreenViewModel homeScreenViewModel)? loaded,
+    TResult? Function(HomeScreenViewModel homeScreenViewModel, double sum)?
+        loaded,
   }) {
     return loading?.call();
   }
@@ -686,7 +735,8 @@ class _$LoadingState implements LoadingState {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(HomeScreenViewModel homeScreenViewModel)? loaded,
+    TResult Function(HomeScreenViewModel homeScreenViewModel, double sum)?
+        loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -743,7 +793,7 @@ abstract class _$$LoadedStateCopyWith<$Res> {
           _$LoadedState value, $Res Function(_$LoadedState) then) =
       __$$LoadedStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({HomeScreenViewModel homeScreenViewModel});
+  $Res call({HomeScreenViewModel homeScreenViewModel, double sum});
 
   $HomeScreenViewModelCopyWith<$Res> get homeScreenViewModel;
 }
@@ -760,12 +810,17 @@ class __$$LoadedStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? homeScreenViewModel = null,
+    Object? sum = null,
   }) {
     return _then(_$LoadedState(
       homeScreenViewModel: null == homeScreenViewModel
           ? _value.homeScreenViewModel
           : homeScreenViewModel // ignore: cast_nullable_to_non_nullable
               as HomeScreenViewModel,
+      sum: null == sum
+          ? _value.sum
+          : sum // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 
@@ -782,14 +837,17 @@ class __$$LoadedStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedState implements LoadedState {
-  const _$LoadedState({required this.homeScreenViewModel});
+  _$LoadedState({required this.homeScreenViewModel, this.sum = 0});
 
   @override
   final HomeScreenViewModel homeScreenViewModel;
+  @override
+  @JsonKey()
+  final double sum;
 
   @override
   String toString() {
-    return 'HomeScreenState.loaded(homeScreenViewModel: $homeScreenViewModel)';
+    return 'HomeScreenState.loaded(homeScreenViewModel: $homeScreenViewModel, sum: $sum)';
   }
 
   @override
@@ -798,11 +856,12 @@ class _$LoadedState implements LoadedState {
         (other.runtimeType == runtimeType &&
             other is _$LoadedState &&
             (identical(other.homeScreenViewModel, homeScreenViewModel) ||
-                other.homeScreenViewModel == homeScreenViewModel));
+                other.homeScreenViewModel == homeScreenViewModel) &&
+            (identical(other.sum, sum) || other.sum == sum));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, homeScreenViewModel);
+  int get hashCode => Object.hash(runtimeType, homeScreenViewModel, sum);
 
   @JsonKey(ignore: true)
   @override
@@ -816,9 +875,11 @@ class _$LoadedState implements LoadedState {
     required TResult Function() initial,
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(HomeScreenViewModel homeScreenViewModel) loaded,
+    required TResult Function(
+            HomeScreenViewModel homeScreenViewModel, double sum)
+        loaded,
   }) {
-    return loaded(homeScreenViewModel);
+    return loaded(homeScreenViewModel, sum);
   }
 
   @override
@@ -827,9 +888,10 @@ class _$LoadedState implements LoadedState {
     TResult? Function()? initial,
     TResult? Function()? empty,
     TResult? Function()? loading,
-    TResult? Function(HomeScreenViewModel homeScreenViewModel)? loaded,
+    TResult? Function(HomeScreenViewModel homeScreenViewModel, double sum)?
+        loaded,
   }) {
-    return loaded?.call(homeScreenViewModel);
+    return loaded?.call(homeScreenViewModel, sum);
   }
 
   @override
@@ -838,11 +900,12 @@ class _$LoadedState implements LoadedState {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(HomeScreenViewModel homeScreenViewModel)? loaded,
+    TResult Function(HomeScreenViewModel homeScreenViewModel, double sum)?
+        loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(homeScreenViewModel);
+      return loaded(homeScreenViewModel, sum);
     }
     return orElse();
   }
@@ -886,10 +949,12 @@ class _$LoadedState implements LoadedState {
 }
 
 abstract class LoadedState implements HomeScreenState {
-  const factory LoadedState(
-      {required final HomeScreenViewModel homeScreenViewModel}) = _$LoadedState;
+  factory LoadedState(
+      {required final HomeScreenViewModel homeScreenViewModel,
+      final double sum}) = _$LoadedState;
 
   HomeScreenViewModel get homeScreenViewModel;
+  double get sum;
   @JsonKey(ignore: true)
   _$$LoadedStateCopyWith<_$LoadedState> get copyWith =>
       throw _privateConstructorUsedError;

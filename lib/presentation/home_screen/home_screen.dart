@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:maney_app/packages/colors_theme.dart';
-import 'package:maney_app/presentation/home_screen/bloc/home_screen_bloc.dart';
-import 'package:maney_app/presentation/home_screen/models/home_screen_view_model.dart';
-import 'package:maney_app/presentation/home_screen/widgets/add_consumable_item_button.dart';
-import 'package:maney_app/presentation/home_screen/widgets/consumable_item_container.dart';
-import 'package:maney_app/presentation/home_screen/widgets/current_data_container.dart';
+import 'package:money_app/packages/colors_theme.dart';
+import 'package:money_app/presentation/home_screen/bloc/home_screen_bloc.dart';
+import 'package:money_app/presentation/home_screen/widgets/add_consumable_item_button.dart';
+import 'package:money_app/presentation/home_screen/widgets/consumable_item_container.dart';
+import 'package:money_app/presentation/home_screen/widgets/current_data_container.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -92,7 +91,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const SliverToBoxAdapter(
                   child: Text(
-                    'Current data',
+                    'Current amount',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 35,
@@ -117,8 +116,8 @@ class HomeScreen extends StatelessWidget {
                       (BuildContext context, int index) {
                         return ConsumableItemContainer(
                           itemName: state.homeScreenViewModel.items[index].text,
-                          itemSum: state.homeScreenViewModel.items[index].itemSum,
-
+                          itemSum:
+                              state.homeScreenViewModel.items[index].itemSum,
                         );
                       },
                       childCount: state.homeScreenViewModel.items.length,

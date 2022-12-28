@@ -6,5 +6,7 @@ class HomeScreenEvent with _$HomeScreenEvent {
     required String itemName,
     required double itemSum,
   }) = AddConsumableItemEvent;
-  const factory HomeScreenEvent.addCurrentSum() = AddCurrentSumEvent;
+  const factory HomeScreenEvent.addCurrentSum({
+    required double currentSum,
+  }) = AddCurrentSumEvent;
 }

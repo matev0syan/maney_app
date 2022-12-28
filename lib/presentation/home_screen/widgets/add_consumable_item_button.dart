@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:maney_app/packages/colors_theme.dart';
-import 'package:maney_app/presentation/home_screen/bloc/home_screen_bloc.dart';
+import 'package:money_app/packages/colors_theme.dart';
+import 'package:money_app/presentation/home_screen/bloc/home_screen_bloc.dart';
 
 class AddConsumableItemButton extends StatelessWidget {
   const AddConsumableItemButton({super.key});
@@ -10,6 +10,7 @@ class AddConsumableItemButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextEditingController itemName = TextEditingController();
     final TextEditingController itemSum = TextEditingController();
+
     return Padding(
       padding: const EdgeInsets.only(right: 10),
       child: GestureDetector(
@@ -64,14 +65,16 @@ class AddConsumableItemButton extends StatelessWidget {
                       style: const TextStyle(color: kMainColorBlue),
                       controller: itemSum,
                       decoration: const InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: kMainColorBlue),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(width: 2, color: kMainColorBlue),
-                        ),
-                      ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: kMainColorBlue),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: kMainColorBlue),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(width: 1, color: Colors.red),
+                          )),
                     ),
                   ],
                 ),
@@ -92,7 +95,7 @@ class AddConsumableItemButton extends StatelessWidget {
                           itemName: itemName.text,
                           itemSum: double.parse(itemSum.text),
                         ));
-                    Navigator.pop(context, 'OK');
+                    if (itemName.text != '') Navigator.pop(context, 'OK');
                     itemName.clear();
                     itemSum.clear();
                   },

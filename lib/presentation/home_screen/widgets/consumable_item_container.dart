@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:maney_app/packages/colors_theme.dart';
+import 'package:money_app/packages/colors_theme.dart';
 
 class ConsumableItemContainer extends StatelessWidget {
   const ConsumableItemContainer({
@@ -15,30 +15,57 @@ class ConsumableItemContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: Container(
-              width: 30,
-              height: 30,
-              decoration: BoxDecoration(
-                color: kMainColorBlue,
-                borderRadius: BorderRadius.circular(10),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+        decoration: BoxDecoration(
+            // color: kMainColorPurple,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(width: 1, color: kMainColorBlue)),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            // Padding(
+            //   padding: const EdgeInsets.only(right: 8),
+            //   child: Container(
+            //     width: 30,
+            //     height: 30,
+            //     decoration: BoxDecoration(
+            //       color: kMainColorBlue,
+            //       borderRadius: BorderRadius.circular(10),
+            //     ),
+            //   ),
+            // ),
+            Flexible(
+              child: Text(
+                itemName,
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: kMainColorWhite,
+                ),
               ),
             ),
-          ),
-          Flexible(
-            child: Text(
-              '$itemName    $itemSum',
-              style: const TextStyle(
-                fontSize: 16,
-                color: kMainColorWhite,
-              ),
+            const SizedBox(
+              width: 15,
             ),
-          )
-        ],
+            Flexible(
+              child: Container(
+                padding: const EdgeInsets.all(2),
+                decoration: BoxDecoration(
+                  color: kMainColorBlack,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Text(
+                  '$itemSum AMD',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: kMainColorWhite,
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

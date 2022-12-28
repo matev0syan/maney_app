@@ -5,7 +5,8 @@ class HomeScreenState with _$HomeScreenState {
   const factory HomeScreenState.initial() = InitialState;
   const factory HomeScreenState.empty() = EmptyState;
   const factory HomeScreenState.loading() = LoadingState;
-  const factory HomeScreenState.loaded({
+  factory HomeScreenState.loaded({
     required HomeScreenViewModel homeScreenViewModel,
+    @Default(0) double sum,
   }) = LoadedState;
 }

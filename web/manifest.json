@@ -1,6 +1,6 @@
 {
-    "name": "maney_app",
-    "short_name": "maney_app",
+    "name": "money_app",
+    "short_name": "money_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

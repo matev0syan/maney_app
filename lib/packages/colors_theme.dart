@@ -6,3 +6,4 @@ const Color kMainColorPurple = Color.fromARGB(255, 199, 125, 255);
 const Color kMainColorPink = Color.fromARGB(255, 181, 23, 158);
 const Color kMainColorBlack = Colors.black;
 const Color kMainColorWhite = Colors.white;
+const Color kErrorColorRed = Colors.red;
