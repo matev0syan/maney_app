@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:money_app/packages/colors_theme.dart';
+import '../../../../packages/colors_theme.dart';
 
 class ConsumableItemContainer extends StatelessWidget {
   const ConsumableItemContainer({

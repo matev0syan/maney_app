@@ -38,6 +38,15 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
           ),
         ),
       );
+
+      if (state.homeScreenViewModel.totalAmount == 0.0) {
+        emit(
+          HomeScreenState.loaded(
+            homeScreenViewModel:
+                const HomeScreenViewModel(items: [], totalAmount: 0.0),
+          ),
+        );
+      }
     }
   }
 

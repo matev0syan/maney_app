@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:money_app/packages/colors_theme.dart';
+import '../../../../packages/colors_theme.dart';
 import 'package:money_app/presentation/home_screen/bloc/home_screen_bloc.dart';
 
 class CurrentDataContainer extends StatelessWidget {
@@ -41,10 +41,10 @@ class CurrentDataContainer extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 5),
-                  TextField(
+                  TextFormField(
+                    controller: currentMoney,
                     keyboardType: TextInputType.number,
                     style: const TextStyle(color: kMainColorBlue),
-                    controller: currentMoney,
                     decoration: const InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: kMainColorBlue),
@@ -53,6 +53,13 @@ class CurrentDataContainer extends StatelessWidget {
                         borderSide: BorderSide(width: 2, color: kMainColorBlue),
                       ),
                     ),
+                    validator: (value) {
+                      if (value == '1') {
+                        return 'False';
+                      } else {
+                        return null;
+                      }
+                    },
                   ),
                 ],
               ),
@@ -92,9 +99,11 @@ class CurrentDataContainer extends StatelessWidget {
       child: Container(
         height: 220,
         decoration: BoxDecoration(
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
-              color: kMainColorBlue,
+              color: double.parse(currentSum) == 0.0
+                  ? kErrorColorRed
+                  : kMainColorBlue,
               blurRadius: 20,
               spreadRadius: 2,
             )
@@ -103,7 +112,9 @@ class CurrentDataContainer extends StatelessWidget {
           shape: BoxShape.circle,
           border: Border.all(
             width: 2,
-            color: kMainColorBlue,
+            color: double.parse(currentSum) == 0.0
+                ? kErrorColorRed
+                : kMainColorBlue,
           ),
         ),
         child: Center(

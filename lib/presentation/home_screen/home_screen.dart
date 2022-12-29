@@ -7,14 +7,10 @@ import 'package:money_app/presentation/home_screen/widgets/consumable_item_conta
 import 'package:money_app/presentation/home_screen/widgets/current_data_container.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({
-    super.key,
-  });
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // HomeScreenViewModel homeScreenViewModel;
-
     return BlocBuilder<HomeScreenBloc, HomeScreenState>(
       builder: (context, state) {
         if (state is EmptyState) {
