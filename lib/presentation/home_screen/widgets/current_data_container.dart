@@ -42,6 +42,7 @@ class CurrentDataContainer extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   TextFormField(
+                    autofocus: true,
                     controller: currentMoney,
                     keyboardType: TextInputType.number,
                     style: const TextStyle(color: kMainColorBlue),
@@ -53,13 +54,6 @@ class CurrentDataContainer extends StatelessWidget {
                         borderSide: BorderSide(width: 2, color: kMainColorBlue),
                       ),
                     ),
-                    validator: (value) {
-                      if (value == '1') {
-                        return 'False';
-                      } else {
-                        return null;
-                      }
-                    },
                   ),
                 ],
               ),
@@ -99,11 +93,9 @@ class CurrentDataContainer extends StatelessWidget {
       child: Container(
         height: 220,
         decoration: BoxDecoration(
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
-              color: double.parse(currentSum) == 0.0
-                  ? kErrorColorRed
-                  : kMainColorBlue,
+              color: kMainColorBlue,
               blurRadius: 20,
               spreadRadius: 2,
             )
@@ -112,14 +104,12 @@ class CurrentDataContainer extends StatelessWidget {
           shape: BoxShape.circle,
           border: Border.all(
             width: 2,
-            color: double.parse(currentSum) == 0.0
-                ? kErrorColorRed
-                : kMainColorBlue,
+            color: kMainColorBlue,
           ),
         ),
         child: Center(
           child: Text(
-            currentSum,
+            double.parse(currentSum) == 0.0 ? 'Balance 0' : "$currentSum AMD",
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 26,

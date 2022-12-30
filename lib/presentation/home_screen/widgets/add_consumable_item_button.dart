@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../packages/colors_theme.dart';
+import 'package:money_app/packages/colors_theme.dart';
 import 'package:money_app/presentation/home_screen/bloc/home_screen_bloc.dart';
 
 class AddConsumableItemButton extends StatelessWidget {
@@ -39,6 +39,8 @@ class AddConsumableItemButton extends StatelessWidget {
                     ),
                     const SizedBox(height: 5),
                     TextField(
+                      textInputAction: TextInputAction.next,
+                      autofocus: true,
                       style: const TextStyle(color: kMainColorBlue),
                       controller: itemName,
                       decoration: const InputDecoration(

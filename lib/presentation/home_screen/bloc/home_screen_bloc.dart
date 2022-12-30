@@ -27,23 +27,25 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
 
       newItems.add(addedItem);
 
-      emit(
-        HomeScreenState.loaded(
-          homeScreenViewModel: HomeScreenViewModel(
-            items: newItems,
-            totalAmount:
-                (state.homeScreenViewModel.totalAmount - event.itemSum) > 0
-                    ? state.homeScreenViewModel.totalAmount - event.itemSum
-                    : 0,
+      if (event.itemSum <= state.homeScreenViewModel.totalAmount) {
+        emit(
+          HomeScreenState.loaded(
+            homeScreenViewModel: HomeScreenViewModel(
+              items: newItems,
+              totalAmount:
+                  (state.homeScreenViewModel.totalAmount - event.itemSum) > 0
+                      ? state.homeScreenViewModel.totalAmount - event.itemSum
+                      : 0,
+            ),
           ),
-        ),
-      );
+        );
+      }
 
       if (state.homeScreenViewModel.totalAmount == 0.0) {
         emit(
           HomeScreenState.loaded(
-            homeScreenViewModel:
-                const HomeScreenViewModel(items: [], totalAmount: 0.0),
+            homeScreenViewModel: HomeScreenViewModel(
+                items: state.homeScreenViewModel.items, totalAmount: 0.0),
           ),
         );
       }

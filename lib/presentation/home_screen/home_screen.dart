@@ -13,60 +13,60 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeScreenBloc, HomeScreenState>(
       builder: (context, state) {
-        if (state is EmptyState) {
-          return const Scaffold(
-            backgroundColor: kMainColorBlack,
-            body: CustomScrollView(
-              slivers: [
-                SliverAppBar(
-                  pinned: true,
-                  snap: false,
-                  floating: false,
-                  backgroundColor: kMainColorBlack,
-                  actions: [
-                    Icon(
-                      Icons.menu_sharp,
-                      color: kMainColorWhite,
-                    ),
-                    SizedBox(width: 10),
-                  ],
-                ),
-                SliverToBoxAdapter(
-                  child: Text(
-                    'Current data',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 35,
-                      color: kMainColorWhite,
-                    ),
-                  ),
-                ),
-                SliverToBoxAdapter(
-                  child: SizedBox(height: 30),
-                ),
-                SliverToBoxAdapter(
-                  child: CurrentDataContainer(
-                    currentSum: '0',
-                  ),
-                ),
-                SliverToBoxAdapter(
-                  child: SizedBox(height: 180),
-                ),
-                SliverToBoxAdapter(
-                  child: Text(
-                    'Empty State',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: kMainColorBlue,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            floatingActionButton: AddConsumableItemButton(),
-          );
-        }
+        // if (state is EmptyState) {
+        //   return const Scaffold(
+        //     backgroundColor: kMainColorBlack,
+        //     body: CustomScrollView(
+        //       slivers: [
+        //         SliverAppBar(
+        //           pinned: true,
+        //           snap: false,
+        //           floating: false,
+        //           backgroundColor: kMainColorBlack,
+        //           actions: [
+        //             Icon(
+        //               Icons.menu_sharp,
+        //               color: kMainColorWhite,
+        //             ),
+        //             SizedBox(width: 10),
+        //           ],
+        //         ),
+        //         SliverToBoxAdapter(
+        //           child: Text(
+        //             'Current data',
+        //             textAlign: TextAlign.center,
+        //             style: TextStyle(
+        //               fontSize: 35,
+        //               color: kMainColorWhite,
+        //             ),
+        //           ),
+        //         ),
+        //         SliverToBoxAdapter(
+        //           child: SizedBox(height: 30),
+        //         ),
+        //         SliverToBoxAdapter(
+        //           child: CurrentDataContainer(
+        //             currentSum: '0',
+        //           ),
+        //         ),
+        //         SliverToBoxAdapter(
+        //           child: SizedBox(height: 180),
+        //         ),
+        //         SliverToBoxAdapter(
+        //           child: Text(
+        //             'Empty State',
+        //             textAlign: TextAlign.center,
+        //             style: TextStyle(
+        //               fontSize: 16,
+        //               color: kMainColorBlue,
+        //             ),
+        //           ),
+        //         ),
+        //       ],
+        //     ),
+        //     floatingActionButton: AddConsumableItemButton(),
+        //   );
+        // }
         if (state is LoadedState) {
           return Scaffold(
             backgroundColor: kMainColorBlack,
