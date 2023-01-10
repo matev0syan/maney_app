@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:money_app/common/system_toast.dart';
 import 'package:money_app/packages/colors_theme.dart';
 import 'package:money_app/presentation/home_screen/bloc/home_screen_bloc.dart';
 
@@ -93,6 +94,17 @@ class AddConsumableItemButton extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
+                    Future.delayed(
+                      const Duration(milliseconds: 1000),
+                      () {
+                        SystemToast.showToast(
+                          maxLines: 2,
+                          context: context,
+                          text: 'Error',
+                          style: SystemToastStyle.error(),
+                        );
+                      },
+                    );
                     context.read<HomeScreenBloc>().add(HomeScreenEvent.addItem(
                           itemName: itemName.text,
                           itemSum: double.parse(itemSum.text),
